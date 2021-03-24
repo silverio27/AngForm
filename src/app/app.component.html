@@ -1,8 +1,5 @@
-<div class="corpo">
-  <po-input p-label="Nome" [(ngModel)]="nome"> </po-input>
-  <po-input p-label="Endereço" [(ngModel)]="endereco"> </po-input>
+<a [routerLink]="['/form-pessoas']" routerLinkActive="router-link-active" >Formulário</a>
+<br>
+<a [routerLink]="['/list-pessoas']" routerLinkActive="router-link-active" >Lista</a>
 
-  <po-button p-label="Incluir" (p-click)="create()"> </po-button>
-
-  <po-table [p-items]="pessoas" [p-columns]="columns" [p-actions]="actions"> </po-table>
-</div>
+<router-outlet></router-outlet>

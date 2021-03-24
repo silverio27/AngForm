@@ -1,0 +1,9 @@
+<div class="corpo">
+  <po-input p-label="Nome" [(ngModel)]="nome"> </po-input>
+  <po-input p-label="Endereço" [(ngModel)]="endereco"> </po-input>
+
+  <po-button p-label="Incluir" (p-click)="create()"> </po-button>
+
+  <po-table [p-items]="pessoas" [p-columns]="columns" [p-actions]="actions">
+  </po-table>
+</div>
