@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
 
   getPessoas() {
     this.trainingService.getPessoas().subscribe((x: any) => {
-      this.pessoas = x.value;
+      this.pessoas = x;
     });
   }
 
