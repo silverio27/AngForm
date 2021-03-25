@@ -21,16 +21,6 @@ export class CadastroDePessoasComponent implements OnInit {
 
   pessoas: any[] = [];
 
-  columns: PoTableColumn[] = [
-    { property: "id" },
-    { property: "nome" },
-    { property: "endereco" },
-  ];
-
-  tableActions: PoTableAction[] = [
-    { label: "Deletar", action: this.deletar.bind(this) },
-  ];
-
   pageActions: PoPageAction[] = [
     { label: "Novo", action: () => this.modal.open() },
   ];
