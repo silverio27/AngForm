@@ -7,15 +7,15 @@ import { PoModule } from '@po-ui/ng-components';
 import { FormsModule } from '@angular/forms';
 import { PoFieldModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
-import { ListPessoasComponent } from './list-pessoas/list-pessoas.component';
-import { FormPessoasComponent } from './form-pessoas/form-pessoas.component';
+import { FormPessoasComponent } from './components/form-pessoas/form-pessoas.component';
+import { CadastroDePessoasComponent } from './pages/cadastro-de-pessoas/cadastro-de-pessoas.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListPessoasComponent,
-    FormPessoasComponent
+    FormPessoasComponent,
+    CadastroDePessoasComponent
   ],
   imports: [
     BrowserModule,

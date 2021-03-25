@@ -1,0 +1,34 @@
+<po-page-default p-title="Cadastro de pessoas" [p-actions]="pageActions">
+
+  <po-button-group [p-buttons]="buttons"> </po-button-group>
+
+  <po-table
+    *ngIf="showInTable;else lista"
+    [p-items]="pessoas"
+    [p-columns]="columns"
+    [p-actions]="tableActions"
+  >
+  </po-table>
+
+  <ng-template #lista>
+    <po-widget
+      *ngFor="let item of pessoas"
+      class="po-md-12 po-lg-4 po-mt-2"
+      p-title="Identificação :{{ item.id }}"
+      p-primary-label="Apagar"
+      (p-primary-action)="deletar(item)"
+    >
+      <div class="po-font-subtitle po-text-center">{{ item.nome}}</div>
+      <div class="po-text-center">{{ item.endereco}}</div>
+    </po-widget>
+  </ng-template>
+
+  <po-modal
+    #modal
+    p-title="Pessoa"
+    [p-primary-action]="confirm"
+    [p-secondary-action]="close"
+  >
+    <app-form-pessoas #form></app-form-pessoas>
+  </po-modal>
+</po-page-default>
