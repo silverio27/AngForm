@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { PoTableAction, PoTableColumn } from "@po-ui/ng-components";
+import { Pessoa } from "../../interface/pessoa";
 
 @Component({
   selector: "app-table-pessoa",
@@ -7,7 +8,7 @@ import { PoTableAction, PoTableColumn } from "@po-ui/ng-components";
   styleUrls: ["./table-pessoa.component.css"],
 })
 export class TablePessoaComponent implements OnInit {
-  @Input() pessoas: any[] = [];
+  @Input() pessoas: Pessoa[] = [];
   @Output() deletar = new EventEmitter();
 
   columns: PoTableColumn[] = [
@@ -28,7 +29,7 @@ export class TablePessoaComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  private internalDelete(pessoa: any) {
+  private internalDelete(pessoa: Pessoa) {
     this.deletar.emit(pessoa);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Pessoa } from "../../interface/pessoa";
 
 @Component({
   selector: "app-card-pessoa",
@@ -6,13 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
   styleUrls: ["./card-pessoa.component.css"],
 })
 export class CardPessoaComponent implements OnInit {
-  @Input() item: any;
+  @Input() pessoa = {} as Pessoa;
   @Output() deletar = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
 
-  internalDelete(pessoa: any) {
+  internalDelete(pessoa: Pessoa) {
     this.deletar.emit(pessoa);
   }
 }

@@ -7,8 +7,9 @@ import {
   PoTableAction,
   PoTableColumn,
 } from "@po-ui/ng-components";
-import { FormPessoasComponent } from "src/app/components/form-pessoas/form-pessoas.component";
-import { TrainingService } from "src/app/training.service";
+import { FormPessoasComponent } from "src/app/pessoas/components/form-pessoas/form-pessoas.component";
+import { PessoaService } from "src/app/pessoas/services/pessoa.service";
+import { Pessoa } from "../../interface/pessoa";
 
 @Component({
   selector: "app-cadastro-de-pessoas",
@@ -19,7 +20,7 @@ export class CadastroDePessoasComponent implements OnInit {
   @ViewChild("modal", { static: true }) modal!: PoModalComponent;
   @ViewChild("form", { static: true }) form!: FormPessoasComponent;
 
-  pessoas: any[] = [];
+  pessoas: Pessoa[] = [];
 
   pageActions: PoPageAction[] = [
     { label: "Novo", action: () => this.modal.open() },
@@ -57,16 +58,19 @@ export class CadastroDePessoasComponent implements OnInit {
 
   showInTable: boolean = true;
 
-  constructor(private trainingService: TrainingService) {}
+  constructor(private pessoaService: PessoaService) {}
 
   ngOnInit(): void {
     this.getPessoas();
   }
 
   create() {
-    const pessoa = { nome: this.form.nome, endereco: this.form.endereco };
+    const pessoa = {
+      nome: this.form.nome,
+      endereco: this.form.endereco,
+    } as Pessoa;
 
-    this.trainingService.create(pessoa).subscribe(
+    this.pessoaService.create(pessoa).subscribe(
       () => {
         this.modal.close();
         this.getPessoas();
@@ -78,14 +82,13 @@ export class CadastroDePessoasComponent implements OnInit {
   }
 
   getPessoas() {
-    this.trainingService.getPessoas().subscribe((x: any) => {
+    this.pessoaService.getPessoas().subscribe((x: Pessoa[]) => {
       this.pessoas = x;
     });
   }
 
-  deletar(pessoa: any) {
-    const id = { id: pessoa.id };
-    this.trainingService.delete(id).subscribe(
+  deletar(pessoa: Pessoa) {
+    this.pessoaService.delete(pessoa.id).subscribe(
       () => {
         this.getPessoas();
       },

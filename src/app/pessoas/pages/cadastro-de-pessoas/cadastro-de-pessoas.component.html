@@ -9,8 +9,8 @@
 
   <ng-template #card>
     <app-card-pessoa
-      *ngFor="let item of pessoas"
-      [item]="item"
+      *ngFor="let pessoa of pessoas"
+      [pessoa]="pessoa"
       (deletar)="deletar($event)"
     ></app-card-pessoa>
   </ng-template>

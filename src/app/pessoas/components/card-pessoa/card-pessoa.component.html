@@ -1,0 +1,9 @@
+<po-widget
+  class="po-md-12 po-lg-4 po-mt-2"
+  p-title="Identificação :{{ pessoa.id }}"
+  p-primary-label="Apagar"
+  (p-primary-action)="internalDelete(pessoa)"
+>
+  <div class="po-font-subtitle po-text-center">{{ pessoa.nome}}</div>
+  <div class="po-text-center">{{ pessoa.endereco }}</div>
+</po-widget>
