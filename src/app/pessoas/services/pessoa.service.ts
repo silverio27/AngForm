@@ -11,17 +11,17 @@ export class PessoaService {
   constructor(private http: HttpClient) {}
 
   create(pessoa: Pessoa): Observable<Pessoa> {
-    const url = environment.endpoint;
+    const url = `${environment.endpoint}/pessoa`;
     return this.http.post<Pessoa>(url, pessoa);
   }
 
   getPessoas(): Observable<Pessoa[]> {
-    const url = environment.endpoint;
+    const url = `${environment.endpoint}/pessoa`;
     return this.http.get<Pessoa[]>(url);
   }
 
   delete(id: number) {
-    const url = `${environment.endpoint}/${id}`;
+    const url = `${environment.endpoint}/pessoa/${id}`;
     return this.http.delete(url);
   }
 }
